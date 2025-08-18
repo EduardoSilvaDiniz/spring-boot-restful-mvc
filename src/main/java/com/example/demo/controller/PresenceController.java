@@ -1,10 +1,13 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Presence;
+import com.example.demo.model.PresenceDTO;
 import com.example.demo.service.PresenceService;
 import java.util.List;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,18 +26,20 @@ public class PresenceController {
   }
 
   @PostMapping("/presence")
-  public Presence create(@RequestBody Presence newPresence) {
-    return PresenceService.save(newPresence);
+  public Presence create(@RequestBody PresenceDTO dto) {
+    Presence presence = dto.toEntity();
+    return PresenceService.save(presence);
   }
 
-  // TODO O id é composto, enviar o id via url não é o suficiente
-  //
-  // @PutMapping("/presence/{id}")
-  // public Presence replace(@RequestBody Presence newPresence, @PathVariable Long id) {
-  //   return PresenceService.replace(newPresence, id);
-  // }
-  // @DeleteMapping("/presence/{id}")
-  // public void delete(@PathVariable Long id) {
-  //   PresenceService.deleteById(id);
-  // }
+  @PutMapping("/presence")
+  public Presence replace(@RequestBody PresenceDTO dto) {
+    Presence presence = dto.toEntity();
+    return PresenceService.replace(presence);
+  }
+
+  @DeleteMapping("/presence")
+  public void delete(@RequestBody PresenceDTO dto) {
+    Presence presence = dto.toEntity();
+    PresenceService.deleteById(presence);
+  }
 }
