@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import jakarta.persistence.Embeddable;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,13 +8,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PresenceId {
-  private Long NumberCard;
+  private Long numberCard;
   private Long meetingId;
 
   public PresenceId() {}
 
   public PresenceId(Long numberCard, Long meetingId) {
-    NumberCard = numberCard;
+    this.numberCard = numberCard;
     this.meetingId = meetingId;
   }
 }

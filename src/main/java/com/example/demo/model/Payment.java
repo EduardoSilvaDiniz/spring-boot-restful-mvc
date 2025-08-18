@@ -18,15 +18,15 @@ public class Payment {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private Long NumberCard;
-  private String RefMonth;
+  private Long numberCard;
+  private String refMonth;
   private Timestamp paymentDate;
 
   public Payment() {}
 
   public Payment(Long numberCard, String refMonth, Timestamp paymentDate) {
-    this.NumberCard = numberCard;
-    this.RefMonth = refMonth;
+    this.numberCard = numberCard;
+    this.refMonth = refMonth;
     this.paymentDate = paymentDate;
   }
 }
