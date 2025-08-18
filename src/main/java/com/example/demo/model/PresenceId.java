@@ -2,7 +2,12 @@ package com.example.demo.model;
 
 import jakarta.persistence.Embeddable;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Embeddable
+@Getter
+@Setter
 public class PresenceId {
   private Long NumberCard;
   private Long meetingId;
@@ -11,22 +16,6 @@ public class PresenceId {
 
   public PresenceId(Long numberCard, Long meetingId) {
     NumberCard = numberCard;
-    this.meetingId = meetingId;
-  }
-
-  public Long getNumberCard() {
-    return NumberCard;
-  }
-
-  public void setNumberCard(Long numberCard) {
-    NumberCard = numberCard;
-  }
-
-  public Long getMeetingId() {
-    return meetingId;
-  }
-
-  public void setMeetingId(Long meetingId) {
     this.meetingId = meetingId;
   }
 }

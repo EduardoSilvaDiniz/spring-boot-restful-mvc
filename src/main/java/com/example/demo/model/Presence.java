@@ -4,7 +4,12 @@ import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 @Table(name = "presence")
 public class Presence {
 
@@ -14,21 +19,5 @@ public class Presence {
   public Presence(Boolean isPresence, PresenceId id) {
     this.isPresence = isPresence;
     this.id = id;
-  }
-
-  public PresenceId getId() {
-    return id;
-  }
-
-  public void setId(PresenceId id) {
-    this.id = id;
-  }
-
-  public Boolean getIsPresence() {
-    return isPresence;
-  }
-
-  public void setIsPresence(Boolean isPresence) {
-    this.isPresence = isPresence;
   }
 }
