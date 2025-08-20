@@ -39,4 +39,8 @@ public class AssociatedService {
   public void deleteById(long id) {
     associatedRepository.deleteById(id);
   }
+
+  public Associated getById(long id) {
+    return this.associatedRepository.getReferenceById(id);
+  }
 }

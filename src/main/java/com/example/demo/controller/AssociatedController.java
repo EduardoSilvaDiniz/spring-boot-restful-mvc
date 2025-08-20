@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import com.example.demo.model.Associated;
 import com.example.demo.service.AssociatedService;
-import java.util.List;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +30,11 @@ public class AssociatedController {
   @GetMapping("/associated")
   public List<Associated> getAll() {
     return associatedService.getAll();
+  }
+
+  @GetMapping("/associated/{id}")
+  public Associated getById(@PathVariable Long id) {
+    return associatedService.getById(id);
   }
 
   @PostMapping("/associated")
