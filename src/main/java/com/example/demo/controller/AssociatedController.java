@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.demo.model.Associated;
 import com.example.demo.service.AssociatedService;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +39,7 @@ public class AssociatedController {
   }
 
   @PostMapping("/associated")
-  public Associated create(@RequestBody Associated newAssociated) {
+  public ResponseEntity<?> create(@RequestBody Associated newAssociated) {
     return associatedService.save(newAssociated);
   }
 
