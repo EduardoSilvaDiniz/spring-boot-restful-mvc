@@ -3,10 +3,8 @@ package com.example.demo.service;
 import com.example.demo.model.Presence;
 import com.example.demo.model.PresenceId;
 import com.example.demo.repository.PresenceRepository;
-
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class PresenceService {
@@ -24,12 +22,16 @@ public class PresenceService {
     return presenceRepository.save(newPresence);
   }
 
-  public Presence replace(Presence newPresence, PresenceId id) {
+  public Presence replace(Presence newPresence) {
+    System.out.println(
+        newPresence.getId().getMeetingId() + " " + newPresence.getId().getNumberCard());
     return presenceRepository
-        .findById(id)
+        .findByIdNumberCard(newPresence.getId().getNumberCard())
+        .filter(
+            presence -> presence.getId().getMeetingId().equals(newPresence.getId().getMeetingId()))
         .map(
             presence -> {
-              presence.setIsPresence(presence.getIsPresence());
+              presence.setIsPresence(newPresence.getIsPresence());
               return presenceRepository.save(presence);
             })
         .orElseGet(
@@ -38,7 +40,8 @@ public class PresenceService {
             });
   }
 
-  public void deleteById(PresenceId id) {
-    presenceRepository.deleteById(id);
+  public void deleteById(Presence presence) {
+		PresenceId presenceId = new PresenceId(presence.getId().getNumberCard(), presence.getId().getMeetingId());
+    presenceRepository.deleteById(presenceId);
   }
 }

@@ -9,9 +9,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "group_table")
 @Getter
 @Setter
+@Table(name = "group_table")
 public class Group {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

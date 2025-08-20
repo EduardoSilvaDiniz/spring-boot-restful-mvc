@@ -10,9 +10,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "meeting")
 @Getter
 @Setter
+@Table(name = "meeting")
 public class Meeting {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +20,7 @@ public class Meeting {
 
   private Long groupId;
   private Timestamp date;
+  private String address;
 
   public Meeting() {}
 
@@ -28,6 +29,4 @@ public class Meeting {
     this.date = date;
     this.address = address;
   }
-
-  String address;
 }

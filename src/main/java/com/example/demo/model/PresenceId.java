@@ -8,13 +8,13 @@ import lombok.Setter;
 @Setter
 @Getter
 public class PresenceId {
-  private Long NumberCard;
+  private Long numberCard;
   private Long meetingId;
 
   public PresenceId() {}
 
   public PresenceId(Long numberCard, Long meetingId) {
-    NumberCard = numberCard;
+    this.numberCard = numberCard;
     this.meetingId = meetingId;
   }
 }

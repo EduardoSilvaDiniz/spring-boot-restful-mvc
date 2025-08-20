@@ -10,23 +10,23 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "payment")
 @Getter
 @Setter
+@Table(name = "payment")
 public class Payment {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private Long NumberCard;
-  private String RefMonth;
+  private Long numberCard;
+  private String refMonth;
   private Timestamp paymentDate;
 
   public Payment() {}
 
   public Payment(Long numberCard, String refMonth, Timestamp paymentDate) {
-    NumberCard = numberCard;
-    RefMonth = refMonth;
+    this.numberCard = numberCard;
+    this.refMonth = refMonth;
     this.paymentDate = paymentDate;
   }
 }
