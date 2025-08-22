@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.model.Meeting;
 import com.example.demo.repository.MeetingRepository;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,6 +18,10 @@ public class MeetingService {
   public List<Meeting> getAll() {
     return meetingRepository.findAll();
   }
+
+	public Optional<Meeting> getById(Long id){
+		return meetingRepository.findById(id);
+	}
 
   public Meeting save(Meeting newMeeting) {
     return meetingRepository.save(newMeeting);

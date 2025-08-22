@@ -4,6 +4,8 @@ import com.example.demo.model.Presence;
 import com.example.demo.model.PresenceId;
 import com.example.demo.repository.PresenceRepository;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +19,10 @@ public class PresenceService {
   public List<Presence> getAll() {
     return presenceRepository.findAll();
   }
+
+	public Optional<Presence> getById(PresenceId id){
+		return presenceRepository.findById(id);
+	}
 
   public Presence save(Presence newPresence) {
     return presenceRepository.save(newPresence);

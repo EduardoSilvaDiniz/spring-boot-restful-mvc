@@ -1,10 +1,9 @@
 package com.example.demo.service;
 
-import java.util.List;
-
 import com.example.demo.model.Group;
 import com.example.demo.repository.GroupRepository;
-
+import java.util.List;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +13,10 @@ public class GroupService {
 
   public GroupService(GroupRepository groupRepository) {
     this.groupRepository = groupRepository;
+  }
+
+  public Optional<Group> getById(Long id) {
+    return groupRepository.findById(id);
   }
 
   public List<Group> getAll() {
