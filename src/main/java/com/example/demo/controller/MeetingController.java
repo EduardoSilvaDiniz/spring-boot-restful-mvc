@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.demo.model.Meeting;
+import com.example.demo.model.MeetingDto;
 import com.example.demo.service.MeetingService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import lombok.extern.java.Log;
 
 @RestController
 @RequestMapping("/meeting")
@@ -35,7 +38,10 @@ public class MeetingController {
 	}
 
   @PostMapping
-  public Meeting create(@RequestBody Meeting newMeeting) {
+  public Meeting create(@RequestBody MeetingDto dto) {
+		//TODO isso nao esta funcionando
+		//adiciona logs para debugar
+		Meeting newMeeting = dto.toEntity();
     return meetingService.save(newMeeting);
   }
 

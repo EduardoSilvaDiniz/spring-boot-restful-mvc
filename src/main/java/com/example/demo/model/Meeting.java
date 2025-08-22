@@ -5,7 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.security.Timestamp;
+import jakarta.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,15 +20,25 @@ public class Meeting {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private Long groupId;
-  private Timestamp date;
-  private String address;
+  // TODO adicioanr uma verificação se o grupoid existe
+  @NotNull private Long groupId;
+
+  @NotNull private LocalDate date;
+
+  @NotNull private LocalTime time;
+
+  @NotNull private String address;
 
   public Meeting() {}
 
-  public Meeting(Long groupId, Timestamp date, String address) {
+  public Meeting(
+      @NotNull Long groupId,
+      @NotNull LocalDate date,
+      @NotNull LocalTime time,
+      @NotNull String address) {
     this.groupId = groupId;
     this.date = date;
+    this.time = time;
     this.address = address;
   }
 }
