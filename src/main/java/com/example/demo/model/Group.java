@@ -20,6 +20,8 @@ public class Group {
   private String name;
   private String hours;
 
+  public Group() {}
+
   public Group(String name, String hours) {
     this.name = name;
     this.hours = hours;
