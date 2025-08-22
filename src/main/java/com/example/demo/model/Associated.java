@@ -21,9 +21,10 @@ public class Associated {
 
   public Associated() {}
 
-  public Associated(Long numberCard, Long groupId, String name) {
-    this.numberCard = numberCard;
-    this.groupId = groupId;
-    this.name = name;
-  }
+	public Associated(Long numberCard, @NotNull(message = "associado precisa de um grupo") Long groupId, String name) {
+		this.numberCard = numberCard;
+		this.groupId = groupId;
+		this.name = name;
+	}
+
 }
