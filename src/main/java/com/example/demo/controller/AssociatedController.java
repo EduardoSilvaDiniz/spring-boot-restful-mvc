@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/associated")
 public class AssociatedController {
 
   private final AssociatedService associatedService;
@@ -23,32 +25,27 @@ public class AssociatedController {
     this.associatedService = associatedService;
   }
 
-  @GetMapping("/hello")
-  public String hello() {
-    return "Hello";
-  }
-
-  @GetMapping("/associated")
+  @GetMapping
   public List<Associated> getAll() {
     return associatedService.getAll();
   }
 
-  @GetMapping("/associated/{id}")
+  @GetMapping("/{id}")
   public Associated getById(@PathVariable Long id) {
     return associatedService.getById(id);
   }
 
-  @PostMapping("/associated")
+  @PostMapping
   public ResponseEntity<?> create(@RequestBody Associated newAssociated) {
     return associatedService.save(newAssociated);
   }
 
-  @PutMapping("/associated/{id}")
+  @PutMapping("/{id}")
   public Associated replace(@RequestBody Associated newAssociated, @PathVariable Long id) {
     return associatedService.replace(newAssociated, id);
   }
 
-  @DeleteMapping("/associated/{id}")
+  @DeleteMapping("/{id}")
   public void delete(@PathVariable Long id) {
     associatedService.deleteById(id);
   }
